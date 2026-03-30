@@ -5,4 +5,19 @@
 
 ---@module 'lazy'
 ---@type LazySpec
-return {}
+return {
+  {
+    'preservim/nerdtree',
+    keys = {
+      { '<leader>n', '<cmd>NERDTreeFocus<CR>', desc = 'NERDTree Focus' },
+      { '<C-n>', '<cmd>NERDTree<CR>', desc = 'Open NERDTree' },
+      { '<C-t>', '<cmd>NERDTreeToggle<CR>', desc = 'Toggle NERDTree' },
+      { '<C-f>', '<cmd>NERDTreeFind<CR>', desc = 'Find current file in NERDTree' },
+    },
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = true,
+  },
+}
