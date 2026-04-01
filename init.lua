@@ -102,7 +102,8 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
+vim.opt.statuscolumn = '%s %{v:relnum} %{v:lnum}'
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -600,9 +601,35 @@ require('lazy').setup({
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
+        vtsls = {},
+        eslint = {
+          settings = {
+            workingDirectories = { mode = 'auto' },
+          },
+        },
+        -- 1. Standard LaTeX Intelligence (Autocomplete/Citations)
+        texlab = {
+          settings = {
+            texlab = {
+              build = {
+                onSave = true, -- Optional: Builds your PDF every time you save
+              },
+            },
+          },
+        },
+
+        -- 2. Grammar and Spell Checking (The "Pro" Note-taker setup)
+        ltex = {
+          settings = {
+            ltex = {
+              language = 'en-US', -- Change to your preferred region
+              configurationTarget = 'user',
+            },
+          },
+        },
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
         -- rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -642,9 +669,6 @@ require('lazy').setup({
           },
         },
       }
-
-      -- Ensure the servers and tools above are installed
-      --
       -- To check the current status of installed tools and/or manually install
       -- other tools, you can run
       --    :Mason
