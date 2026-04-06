@@ -105,6 +105,9 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.opt.statuscolumn = '%s %{v:relnum} %{v:lnum}'
 
+-- vim.o.columns = 146
+-- vim.o.lines = 30
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 
@@ -608,15 +611,6 @@ require('lazy').setup({
           },
         },
         -- 1. Standard LaTeX Intelligence (Autocomplete/Citations)
-        texlab = {
-          settings = {
-            texlab = {
-              build = {
-                onSave = true, -- Optional: Builds your PDF every time you save
-              },
-            },
-          },
-        },
 
         -- 2. Grammar and Spell Checking (The "Pro" Note-taker setup)
         ltex = {
