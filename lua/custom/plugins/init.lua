@@ -16,6 +16,9 @@ return {
     'akinsho/toggleterm.nvim',
     version = '*',
     config = true,
+    keys = {
+      { '<leader>tt', '<cmd>ToggleTerm size=3<CR>', desc = '[T]oggle [T]erminal' },
+    },
   },
   {
     'tpope/vim-fugitive',
@@ -31,5 +34,12 @@ return {
         out_dir = 'build',
       }
     end,
+  },
+  {
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    build = 'cd app && yarn install',
+    init = function() vim.g.mkdp_filetypes = { 'markdown' } end,
+    ft = { 'markdown' },
   },
 }
