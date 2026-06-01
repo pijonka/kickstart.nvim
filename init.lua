@@ -982,6 +982,22 @@ require('lazy').setup({
 })
 
 vim.keymap.set('i', '<C-k>', '<C-k>', { noremap = true, silent = true })
+-- Fix clipboard over SSH using OSC 52
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+    ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste '+',
+    ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+  },
+}
+
+-- Optional: Link your system clipboard to Vim's default yank/paste operations
+-- This lets you use `yy` and `p` instead of `"+yy` and `"+p`
+vim.opt.clipboard = 'unnamedplus'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
